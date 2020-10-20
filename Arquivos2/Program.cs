@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace Arquivos2
 {
@@ -87,6 +88,7 @@ namespace Arquivos2
             }
             */
 
+            /*
             //versao com o BLOCO USING... estanciando o StreamReader de forma resumida, apenas com a classe File
             string path = "/Users/nxgames/Projects/Arquivos2/Arquivos2/arquivotexto.txt";
 
@@ -104,6 +106,87 @@ namespace Arquivos2
                     }
                 }
                 
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("ERRO (IO): " + e.Message);
+
+            }
+            */
+
+            /*
+
+            //Agora vamos usar o StreamWriter em ver do StreamReader
+
+            string sourcePath = "/Users/nxgames/Projects/Arquivos2/Arquivos2/arquivotexto.txt";
+            string targetpath = "/Users/nxgames/Projects/Arquivos2/Arquivos2/arquivotexto2.txt";
+
+            try
+            {
+                string[] lines = File.ReadAllLines(sourcePath);
+
+                using (StreamWriter sw = File.AppendText(targetpath))
+                {
+                    foreach(string line in lines)
+                    {
+                        sw.WriteLine(line.ToUpper());
+
+                    }
+
+                }
+                
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("ERRO (IO): " + e.Message);
+
+            }
+
+            */
+
+            // DIRETCTORY E DIRECTORYINFO
+            //no windows
+            //string path = @"c:\temp\myfolder";
+            //string path = "c:\\temp\\myfolder";
+
+            string path = "/Users/nxgames/Projects/Arquivos2/Arquivos2/myfolder";
+
+            try
+            {
+                
+                //usando só var tb dá, daí o C# faz a inferência do tipo para nós
+                //var folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+
+                //mas prefiro declarar...
+                IEnumerable<string> folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+
+                Console.WriteLine("Folders: ");
+
+                foreach(string pastas in folders)
+                {
+                    Console.WriteLine(pastas);
+
+                }
+
+
+                //mas prefiro declarar...
+                IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+
+                Console.WriteLine("Files: ");
+
+                foreach (string pastas in files)
+                {
+                    Console.WriteLine(pastas);
+
+                }
+
+                //para o windows
+
+                // Directory.CreateDirectory(path + "\\newfolder");
+                // Directory.CreateDirectory(path + @"\newfolder");
+
+                Directory.CreateDirectory(path + "/newfolder");
+
             }
             catch (IOException e)
             {
