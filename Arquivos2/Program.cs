@@ -144,6 +144,8 @@ namespace Arquivos2
 
             */
 
+
+            /*
             // DIRETCTORY E DIRECTORYINFO
             //no windows
             //string path = @"c:\temp\myfolder";
@@ -193,6 +195,35 @@ namespace Arquivos2
                 Console.WriteLine("ERRO (IO): " + e.Message);
 
             }
+            */
+
+            //windows
+            //string path = @"c:\temp\myfolder\file1.txt";
+
+            string path = "/Users/nxgames/Projects/Arquivos2/Arquivos2/myfolder/file1.txt";
+
+
+            //sistema baseado em linux (unix)
+            Console.WriteLine("DirectorySeparatorChar......: " + Path.DirectorySeparatorChar);
+            Console.WriteLine("PathSeparator...............: " + Path.PathSeparator);
+
+            //: "os dois pontos" é o caracter para separar as pastas, no windows é o ; "ponto e virgual;
+
+            Console.WriteLine("GetDirectoryName............: " + Path.GetDirectoryName(path));
+            Console.WriteLine();
+          
+            Console.WriteLine("GetFullPath.................: " + Path.GetFullPath(path));
+            Console.WriteLine();
+
+            Console.WriteLine("GetFileName.................: " + Path.GetFileName(path));
+            Console.WriteLine("GetFileNameWithoutExtension.: " + Path.GetFileNameWithoutExtension(path));
+            Console.WriteLine("GetExtension................: " + Path.GetExtension(path));
+            Console.WriteLine();
+
+            //Pasta temporária do sistema onde eu posso manipular alteracoes
+            Console.WriteLine("GetTempPath................: " + Path.GetTempPath());
+            Console.WriteLine();
+
         }
     }
 }
